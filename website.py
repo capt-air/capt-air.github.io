@@ -12,12 +12,10 @@ fg_pm25 = px.line(
     df_pm25,
     x="datetimeLocal",
     y="value",
-    color="parameter",
-    title="Air pollution - PM2.5",
+    title="Pollution PM2.5 de l'air à Nguyen Van Cuu (partie est de Hanoï, environ 70km de notre Capt-Air)",
     labels={
         "datetimeLocal": "Date",
         "value": "µg/m³",
-        "parameter": "Pollutant"
     },
     template="plotly_dark",
     color_discrete_sequence=["#00CC96"]  # Green color for PM2.5
@@ -39,7 +37,7 @@ fg_pm25.add_hline(
     line_color="red",
     annotation_text="Limite de l'OMS (moyenne annuelle) à 5"
 )
-
+fg_pm25.update_yaxes(range=[0, 110])
 fg_pm25.write_html("plot_pm25.html", include_plotlyjs="cdn")
 
 # Plot for PM10
@@ -48,12 +46,10 @@ fg_pm10 = px.line(
     df_pm10,
     x="datetimeLocal",
     y="value",
-    color="parameter",
-    title="Air pollution - PM10",
+    title="Pollution PM10 de l'air à Nguyen Van Cuu (partie est de Hanoï, environ 70km de notre Capt-Air)",
     labels={
         "datetimeLocal": "Date",
         "value": "µg/m³",
-        "parameter": "Pollutant"
     },
     template="plotly_dark",
     color_discrete_sequence=["#EF553B"]
@@ -77,6 +73,6 @@ fg_pm10.add_hline(
     line_color="red",
     annotation_text="Limite de l'OMS (moyenne annuelle) à 15"
 )
-
+fg_pm10.update_yaxes(range=[0, 110])
 fg_pm10.write_html("plot_pm10.html", include_plotlyjs="cdn")
 print("Generated: plot_pm25.html and plot_pm10.html")
